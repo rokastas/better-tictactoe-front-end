@@ -57,7 +57,7 @@ export function CheckName() {
     return (<div>
         {data?.success === true && <h1>DATI INVIATI VALIDI</h1>}
         {data?.success === false && <h1>DATI INVIATI NON VALIDI</h1>}
-        <button onClick={() => setStatus('INITIAL')}>INVIA UN ALTRO VOLORE</button>
+        <button onClick={() => setStatus('INITIAL')}>INVIA UN ALTRO VALORE</button>
     </div>)
   }
 
