@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { BaseResponse } from '../interfaces';
+import '../App.css';
 
 export function CheckFullInfo() {
   const [status, setStatus] = useState<'INITIAL' | 'SEND_DATA' | 'SENDING_DATA' | 'DATA_SENDED' | 'ERROR_SENDING_DATA'>();
   const [name, setName] = useState<string>('');
-  const [age, setAge] = useState<number>(0);
+  const [age, setAge] = useState<number>();
   const [maritalStatus, setMaritalStatus] = useState<string>('');
   const [dateOfBirth, setDateOfBirth] = useState<string>('');
   const [data , setData] = useState<BaseResponse>();
@@ -43,53 +44,57 @@ export function CheckFullInfo() {
 
   if (status === 'ERROR_SENDING_DATA') {
     return (
-      <div>
+      <div className="form-container">
         <h1>ERRORE INVIO DATI</h1>
-        <button onClick={() => setStatus('INITIAL')}>RIPROVA</button>
+        <button className="button" onClick={() => setStatus('INITIAL')}>RIPROVA</button>
       </div>
     );
   }
 
   if(status === 'SEND_DATA' || status === 'SENDING_DATA') {
     return (
-      <div>
+      <div className="form-container">
         <h1>INVIO IN CORSO</h1>
-        <button onClick={() => setStatus('INITIAL')}>ANNULLA</button>
+        <button className="button" onClick={() => setStatus('INITIAL')}>ANNULLA</button>
       </div>
     );
   }
 
   if(status === 'DATA_SENDED') {
-    return (<div>
+    return (<div className="form-container">
         {data?.success === true && <h1>DATI INVIATI VALIDI</h1>}
         {data?.success === false && <h1>DATI INVIATI NON VALIDI</h1>}
-        <button onClick={() => setStatus('INITIAL')}>INVIA UN ALTRO VALORE</button>
+        <button className="button" onClick={() => setStatus('INITIAL')}>INVIA UN ALTRO VALORE</button>
     </div>)
   }
 
   return (
-    <div>
+    <div className="form-container">
       <h2>INSERISCI IL NOME</h2>
-      <input type="text" value={name} onChange={(e) => {
-        setName(e.target.value);
-      }}></input>
+      <input type="text" placeholder="NOME" className="input-field" value={name} onChange={(e) => {
+        setName(e.target.value);}}>
+      </input>
       <h2>INSERISCI L'ETÀ</h2>
-      <input type="number" value={age} onChange={(e) => {
-        setAge(Number(e.target.value));
-      }}></input>
+      <input type="number" placeholder="0" className="input-field" value={age} onChange={(e) => {
+        setAge(Number(e.target.value));}}>
+      </input>
       <h2>SELEZIONA LO STATO CIVILE</h2>
-      <select value={maritalStatus} onChange={(e) => {
+      <select value={maritalStatus} className="input-field" onChange={(e) => {
         setMaritalStatus(e.target.value)
       }}>
-        <option value="">Seleziona...</option>
+        <option value="" className="placeholder-text">Seleziona...</option>
         <option value="single">Celibe / Nubile</option>
         <option value="married">Coniugato/a</option>
         <option value="divorced">Divorziato/a</option>
         <option value="widowed">Vedovo/a</option>
       </select>
       <h2>INSERISCI LA DATA DI NASCITA</h2>
-      <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)}></input>
-      <button onClick={() => setStatus('SEND_DATA')}>VALIDA</button>
+      <input type="date" className="input-field" value={dateOfBirth}
+        onChange={(e) => setDateOfBirth(e.target.value)}>
+      </input>
+      <button className="button" onClick={() => setStatus('SEND_DATA')}>
+        VALIDA
+      </button>
     </div>
   );
 }

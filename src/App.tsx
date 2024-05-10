@@ -1,18 +1,19 @@
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
 import { CheckName } from './pages/CheckName';
 import { CheckFullInfo } from './pages/CheckFullInfo';
 import { Home } from './pages/Home';
+import './App.css';
 
 export default function App() {
   return (
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="check-name" element={<CheckName />} />
-          <Route path="check-full-info" element={<CheckFullInfo />} />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="check-name" element={<CheckName />} />
+        <Route path="check-full-info" element={<CheckFullInfo />} />
+        <Route path="*" element={<NoMatch />} />
+      </Route>
+    </Routes>
   );
 }
 
@@ -22,17 +23,25 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" className={({ isActive }) =>
+              (isActive ? 'nav-link nav-link--active' : 'nav-link')}>
+                Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/check-name">Check Name</Link>
+            <NavLink to="/check-name" className={({ isActive }) =>
+              (isActive ? 'nav-link nav-link--active' : 'nav-link')}>
+                Check Name
+            </NavLink>
           </li>
           <li>
-            <Link to="/check-full-info">Check Full Info</Link>
+            <NavLink to="/check-full-info" className={({ isActive }) =>
+              (isActive ? 'nav-link nav-link--active' : 'nav-link')}>
+                Check Full Info
+            </NavLink>
           </li>
         </ul>
       </nav>
-      <hr />
       <Outlet />
     </div>
   );
