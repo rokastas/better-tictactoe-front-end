@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { BaseResponse } from '../interfaces';
 
-export function CheckName() {
+export function CheckFullInfo() {
   const [status, setStatus] = useState<'INITIAL' | 'SEND_DATA' | 'SENDING_DATA' | 'DATA_SENDED' | 'ERROR_SENDING_DATA'>();
-  const [value, setValue] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [age, setAge] = useState<number>(0);
+  const [maritalStatus, setMaritalStatus] = useState<string>('');
+  const [dateOfBirth, setDateOfBirth] = useState<string>('');
   const [data , setData] = useState<BaseResponse>();
 
   useEffect(() => {
@@ -15,7 +18,10 @@ export function CheckName() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: value,
+          nameLong: name,
+          age: age,
+          maritalStatus: maritalStatus,
+          dateOfBirth: dateOfBirth,
         })
       })
       .then((rawResponse) => {
@@ -33,7 +39,7 @@ export function CheckName() {
         setStatus('ERROR_SENDING_DATA');
       })
     }
-  }, [status, value]);
+  }, [status, name, age, maritalStatus, dateOfBirth]);
 
   if (status === 'ERROR_SENDING_DATA') {
     return (
@@ -63,10 +69,26 @@ export function CheckName() {
 
   return (
     <div>
-      <h1>INSERISCI IL NOME</h1>
-      <input type="text" value={value} onChange={(e) => {
-        setValue(e.target.value);
+      <h2>INSERISCI IL NOME</h2>
+      <input type="text" value={name} onChange={(e) => {
+        setName(e.target.value);
       }}></input>
+      <h2>INSERISCI L'ETÀ</h2>
+      <input type="number" value={age} onChange={(e) => {
+        setAge(Number(e.target.value));
+      }}></input>
+      <h2>SELEZIONA LO STATO CIVILE</h2>
+      <select value={maritalStatus} onChange={(e) => {
+        setMaritalStatus(e.target.value)
+      }}>
+        <option value="">Seleziona...</option>
+        <option value="single">Celibe / Nubile</option>
+        <option value="married">Coniugato/a</option>
+        <option value="divorced">Divorziato/a</option>
+        <option value="widowed">Vedovo/a</option>
+      </select>
+      <h2>INSERISCI LA DATA DI NASCITA</h2>
+      <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)}></input>
       <button onClick={() => setStatus('SEND_DATA')}>VALIDA</button>
     </div>
   );
