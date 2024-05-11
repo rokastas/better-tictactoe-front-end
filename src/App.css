@@ -39,7 +39,7 @@ nav ul {
   border-radius: 16px;
 }
 
-.form-container h2 {
+.form-container h1,h2 {
   width: 100%;
   color: rgb(44, 44, 44);
 }
