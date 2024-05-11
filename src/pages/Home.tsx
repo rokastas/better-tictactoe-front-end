@@ -1,7 +1,7 @@
 export function Home() {
   return (
-    <div>
-      <h2>Home</h2>
+    <div className="form-container">
+      <h2 className="home">Home</h2>
     </div>
   );
 }
