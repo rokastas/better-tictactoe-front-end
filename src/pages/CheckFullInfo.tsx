@@ -70,15 +70,15 @@ export function CheckFullInfo() {
 
   return (
     <div className="form-container">
-      <h2>INSERISCI IL NOME</h2>
-      <input type="text" placeholder="NOME" className="input-field" value={name} onChange={(e) => {
+      <h2>Inserisci il nome</h2>
+      <input type="text" placeholder="Nome" className="input-field" value={name} onChange={(e) => {
         setName(e.target.value);}}>
       </input>
-      <h2>INSERISCI L'ETÀ</h2>
+      <h2>Inserisci l'età</h2>
       <input type="number" placeholder="0" className="input-field" value={age} onChange={(e) => {
         setAge(Number(e.target.value));}}>
       </input>
-      <h2>SELEZIONA LO STATO CIVILE</h2>
+      <h2>Seleziona lo stato civile</h2>
       <select value={maritalStatus} className="input-field" onChange={(e) => {
         setMaritalStatus(e.target.value)
       }}>
@@ -88,7 +88,7 @@ export function CheckFullInfo() {
         <option value="divorced">Divorziato/a</option>
         <option value="widowed">Vedovo/a</option>
       </select>
-      <h2>INSERISCI LA DATA DI NASCITA</h2>
+      <h2>Inserisci la data di nascita</h2>
       <input type="date" className="input-field" value={dateOfBirth}
         onChange={(e) => setDateOfBirth(e.target.value)}>
       </input>

@@ -64,8 +64,8 @@ export function CheckName() {
 
   return (
     <div className="form-container">
-      <h1>INSERISCI IL NOME</h1>
-      <input type="text" placeholder="NOME" className="input-field" value={value} onChange={(e) => {
+      <h2>Inserisci il nome</h2>
+      <input type="text" placeholder="Nome" className="input-field" value={value} onChange={(e) => {
         setValue(e.target.value);
       }}></input>
       <button className="button" onClick={() => setStatus('SEND_DATA')}>VALIDA</button>
