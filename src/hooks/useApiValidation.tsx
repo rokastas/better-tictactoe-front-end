@@ -1,3 +1,6 @@
+// Code for the communication with the API
+// The hook is used in the CheckName and CheckFullInfo pages
+
 import { useEffect, useState } from 'react';
 import { BaseResponse } from '../interfaces';
 
