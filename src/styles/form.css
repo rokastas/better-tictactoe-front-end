@@ -1,0 +1,17 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+  max-width: 500px;
+  align-items: center;
+  margin: 100px auto;
+  padding: 24px 48px;
+  background-color: white;
+  border-radius: 16px;
+}
+
+.form-container h1,h2 {
+  width: 100%;
+  color: rgb(44, 44, 44);
+}

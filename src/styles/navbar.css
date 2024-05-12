@@ -1,0 +1,23 @@
+nav {
+  background-color: #ffffff0a;
+  padding: 24px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-link:hover,
+.nav-link--active {
+  text-decoration: underline;
+}
